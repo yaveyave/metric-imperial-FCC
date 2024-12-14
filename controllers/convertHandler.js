@@ -43,41 +43,35 @@ function ConvertHandler() {
 
     switch(result){
       case "km":
-        return "km";
       case "mi":
-        return 'mi';
-      case 'gal':
-        return 'gal';
-      case 'lbs':
-        return 'lbs';
-      case 'kg':
-        return 'kg';
-      case 'l':
-        return 'L';
+      case "gal":
+      case "lbs":
+      case "kg":
+        return result;
+      case "l":
+        return "L"; 
       default:
-        return undefined;
+        return undefined; 
     }
   };
   
-  this.getReturnUnit = function(initUnit) {
-    let result = initUnit.toLowerCase();
-
-    switch (result){
-      case 'gal':
-        return 'L';
-      case 'L':
-        return 'gal';
-      case 'mi':
-        return 'km';
-      case 'km':
-        return 'mi';
-      case 'lbs':
-        return 'kg';
-      case 'kg':
-        return 'lbs';
+  this.getReturnUnit = function (initUnit) {
+    switch (initUnit.toLowerCase()) {
+      case "gal":
+        return "L";
+      case "l":
+        return "gal";
+      case "mi":
+        return "km";
+      case "km":
+        return "mi";
+      case "lbs":
+        return "kg";
+      case "kg":
+        return "lbs";
+      default:
+        return undefined;
     }
-    
-    return result;
   };
 
   this.spellOutUnit = function(unit) {
@@ -132,9 +126,8 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    return `${initNum} ${this.spellOutUnit(initUnit)}
-    converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
-  };
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+  };  
 }
 
 
